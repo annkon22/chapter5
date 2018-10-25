@@ -1,3 +1,5 @@
+ #Implement the len method (__len__) for the hash table Map ADT implementation
+
 class HashTable:
     def __init__(self):
         self.size = 11
