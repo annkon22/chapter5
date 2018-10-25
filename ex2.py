@@ -8,7 +8,7 @@ def binary_search_recurive(a_list, first, last, item):
     
     found = False
     midpoint = (first + last) // 2
-    if midpoint == 0 or midpoint == len(a_list) and not found:
+    if midpoint == 0 or midpoint == len(a_list) - 1 and not found:
         return "no such number"
     if a_list[midpoint] == item:
         found = True
