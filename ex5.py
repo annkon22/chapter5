@@ -6,7 +6,7 @@ class HashTable:
     def __init__(self):
         self.size = 11
         self.slots = [None] * self.size
-        self.data = [None] * self.size
+        self.data = [[] for _ in range(self.size)]
 
 
     def put(self, key, data):
@@ -14,10 +14,10 @@ class HashTable:
 
         if self.slots[hash_value] == None:
             self.slots[hash_value] = key
-            self.data[hash_value] = data
+            self.data[hash_value].append(data)
         else:
             if self.slots[hash_value] == key:
-                self.data[hash_value].append(data)  
+                self.data[hash_value].append(data)
 
     def hash_function(self, key, size):
         return key % size
@@ -54,7 +54,7 @@ class HashTable:
             return
         else:
             self.slots[hash_value] = None
-            self.data[hash_value] = None
+            self.data[hash_value] = []
 
 
 
@@ -78,5 +78,3 @@ print(h.data)
 print()
 h.remove(54)
 print(h.data)
-
-
