@@ -13,5 +13,5 @@ my_list = []
 for _ in range(10):
     my_list.append(random.randrange(0, 100))
     bubble_sort(my_list)
-end = time.time()
-print(my_list)
+    print(my_list)
+
