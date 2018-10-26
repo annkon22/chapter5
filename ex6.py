@@ -20,7 +20,9 @@ class HashTable:
                 while self.slots[next_slot] != None and self.slots[next_slot] != key:
                     next_slot = self.rehash(next_slot, len(self.slots))
                     if next_slot == hash_value:
-                        self.size += 1                                  ############changed this
+                        self.size += 1       
+                        self.slots.append(None)
+                        self.data.append(None)
 
                 if self.slots[next_slot] == None:
                     self.slots[next_slot] = key
