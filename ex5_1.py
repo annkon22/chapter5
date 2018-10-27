@@ -57,16 +57,20 @@ class HashTable:
     
     def __setitem__(self, key, data):
         self.put(key, data)
-
-    def remove(self, key, data):
+        
+        
+        
+    def remove(self, key):
+        found = False
         hash_value = self.hash_function(key, len(self.slots))
-        if self.slots[hash_value] == None:
-            return
-        elif self.slots[hash_value] == key:
-            self.slots[hash_value] = None
-            self.data[hash_value] = None
-        else:
-            self.rehash(hash_value, self.size)
+        while not found:
+            if self.slots[hash_value] == key:
+                self.slots[hash_value] = None
+                self.data[hash_value] = None
+                found = True
+            else:
+                self.rehash(hash_value, self.size)
+
 
 
 
