@@ -15,20 +15,20 @@ def partition(a_list, first, last):
 
     a, b, c = first, (first + last) // 2, last
 
-    if a > b:
-        if a < c:
-            pivot_value = a
-        elif b > c:
-            pivot_value = b
+    if a_list[a] > a_list[b]:
+        if a_list[a] < a_list[c]:
+            pivot_value = a_list[a]
+        elif a_list[b] > a_list[c]:
+            pivot_value = a_list[b]
         else:
-            pivot_value = c
+            pivot_value = a_list[c]
     else:
-        if a > c:
-            pivot_value = a
-        elif b < c:
-            pivot_value = b
+        if a_list[a] > a_list[c]:
+            pivot_value = a_list[a]
+        elif a_list[b] < a_list[c]:
+            pivot_value = a_list[b]
         else:
-            pivot_value = c
+            pivot_value = a_list[c]
 
     left_mark = first + 1 
     right_mark = last
