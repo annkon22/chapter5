@@ -48,13 +48,13 @@ class HashTable:
     def __setitem__(self, key, data):
         self.put(key, data)
 
-    def remove(self, key):
+    def remove(self, key, data):
         hash_value = self.hash_function(key, len(self.slots))
         if self.slots[hash_value] == None:
             return
         else:
             self.slots[hash_value] = None
-            self.data[hash_value] = []
+            self.data[hash_value].remove(data)
 
 
 
@@ -76,5 +76,5 @@ h[20] = 'chicken'
 print(h.slots)
 print(h.data)
 print()
-h.remove(54)
+h.remove(54, 'tomato')
 print(h.data)
