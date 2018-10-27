@@ -16,7 +16,7 @@ class HashTable:
             self.data[hash_value] = data
         else:
             if self.slots[hash_value] == key:
-                self.data[hash_value] == data   #replace
+                self.data[hash_value] = data   #replace
 
             else:
                 next_slot = self.rehash(hash_value, len(self.slots))
@@ -88,5 +88,5 @@ h[20] = 'chicken'
 print(h.slots)
 print(h.data)
 print()
-h.remove(54, 'cat')
+h.remove(54)
 print(h.data)
