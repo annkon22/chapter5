@@ -33,11 +33,13 @@ class HashTable:
         return key % size
 
     def rehash(self, old_hash, size):
-        for i in range(len(self.slots))
-            while i != len(self.slots)
-            quadr = pow(i, 2)
-            new_hash = (old_hash + quadr) % size
-            return new_hash
+        i = 0
+        while i < size:
+            index = (old_hash + i * i) % size
+            if self.slots[index] is None:
+                return index
+            i += 1
+        return None
 
     def get(self, key):
         start_slot = self.hash_function(key, len(self.slots))
