@@ -1,20 +1,29 @@
 #A bubble sort can be modiﬁed to “bubble” in both directions. The ﬁrst pass moves “up” the list, 
 # and the second pass moves “down.” This alternating pattern continues until no more passes are necessary. 
 # Implement this variation and describe under what circumstances it might be appropriate.
-import random
-
-def bubble_sort(a_list):
-    for pass_num in range(len(a_list) - 1, 0, -1):
-        for i in range(pass_num):
+def shake_sort(a_list):
+    swapped = True
+    while swapped:
+        swapped = False
+        for i in range(len(a_list) - 2):
             if a_list[i] > a_list[i + 1]:
                 a_list[i], a_list[i + 1] = a_list[i + 1], a_list[i]
-            if a_list[i] < a_list[i - 1] and i != 0:
-                a_list[i], a_list[i - 1] = a_list[i - 1], a_list[i]
+                swapped = True
 
-my_testlist = []
-for i in range(21):
-    my_testlist.append(random.randrange(0, 1000))
+        if not swapped:
+            break
 
-print(my_testlist)
-bubble_sort(my_testlist)
-print(my_testlist)
+        swapped = False
+        for i in range(len(a_list) - 2, 0, -1):
+            if a_list[i] > a_list[i + 1]:
+                a_list[i], a_list[i + 1] = a_list[i + 1], a_list[i]
+                swapped = True
+
+from random import randrange
+
+lst = []
+for _ in range(10):
+    lst.append(randrange(0, 1000))
+print(lst)
+shake_sort(lst)
+print(lst)
