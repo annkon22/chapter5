@@ -53,8 +53,9 @@ class HashTable:
         if self.slots[hash_value] == None:
             return
         else:
-            self.slots[hash_value] = None
             self.data[hash_value].remove(data)
+            if not len(self.data[hash_value]):
+                self.slots[hash_value] = None
 
 
 
