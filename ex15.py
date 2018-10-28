@@ -11,24 +11,17 @@ def quick_sort_helper(a_list, first, last):
         quick_sort_helper(a_list, first, split_point - 1)
         quick_sort_helper(a_list, split_point + 1, last)
 
+def median(a_list, first, middle, last):
+  if a_list[first] < a_list[last]:
+    return first if a_list[middle] < a_list[first] else middle if a_list[middle] < a_list[last] else last
+  else:
+    return last if a_list[middle] < a_list[last] else middle if a_list[middle] < a_list[first] else first
+
 def partition(a_list, first, last):
 
-    a, b, c = first, (first + last) // 2, last
-
-    if a_list[a] > a_list[b]:
-        if a_list[a] < a_list[c]:
-            pivot_value = a_list[a]
-        elif a_list[b] > a_list[c]:
-            pivot_value = a_list[b]
-        else:
-            pivot_value = a_list[c]
-    else:
-        if a_list[a] > a_list[c]:
-            pivot_value = a_list[a]
-        elif a_list[b] < a_list[c]:
-            pivot_value = a_list[b]
-        else:
-            pivot_value = a_list[c]
+    pivotindex = median(a_list, first, (first + last) // 2, last)
+    a_list[first], a_list[pivotindex] = a_list[pivotindex], a_list[first]
+    pivot_value = a_list[first]
 
     left_mark = first + 1 
     right_mark = last
@@ -49,7 +42,6 @@ def partition(a_list, first, last):
             a_list[left_mark] = a_list[right_mark]
             a_list[right_mark] = temp
 
-    
     temp = a_list[first]
     a_list[first] = a_list[right_mark]
     a_list[right_mark] = temp
@@ -60,5 +52,5 @@ my_list = []
 for i in range(200):
     my_list.append(random.randrange(0, 100))
 quick_sort(my_list)
-end = time.time()
+# end = time.time()
 print(my_list)
